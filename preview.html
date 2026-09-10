@@ -548,6 +548,190 @@ main, main > section, main > .ticker {
   .brand-name { font-size: 23px; }
   .brand-subname { font-size: 6px; letter-spacing: .18em; }
 }
+
+
+/* v7 — mobile service-area repair + persistent call CTA */
+.mobile-call-cta {
+  display: none;
+}
+
+@media (max-width: 820px) {
+  /* The service area must never retain its desktop two-column layout on phones/tablets. */
+  .service-area-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+  }
+
+  .service-area-grid > .area-card {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .service-area-head {
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .area-card-title,
+  .area-card-title > div {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .area-card-title h3,
+  .area-card-title small {
+    max-width: 100% !important;
+    overflow-wrap: anywhere;
+  }
+
+  /* Persistent mobile CTA */
+  body {
+    padding-bottom: calc(104px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .mobile-call-cta {
+    position: fixed;
+    z-index: 9998;
+    left: 50%;
+    bottom: max(16px, calc(env(safe-area-inset-bottom) + 14px));
+    transform: translateX(-50%);
+    width: min(calc(100% - 32px), 430px);
+    min-height: 62px;
+    padding: 11px 22px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
+    background: rgba(158, 57, 87, .96);
+    color: #fff;
+    text-decoration: none;
+    box-shadow:
+      0 18px 42px rgba(103, 35, 56, .24),
+      inset 0 1px 0 rgba(255,255,255,.18);
+    border: 1px solid rgba(255,255,255,.22);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-sizing: border-box;
+  }
+
+  .mobile-call-cta span {
+    font-family: "Playfair Display", serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .01em;
+  }
+
+  .mobile-call-cta small {
+    margin-top: 3px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 9px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.82);
+  }
+
+  .mobile-call-cta:active {
+    transform: translateX(-50%) scale(.985);
+  }
+}
+
+@media (max-width: 640px) {
+  .service-area {
+    padding-left: max(18px, env(safe-area-inset-left)) !important;
+    padding-right: max(18px, env(safe-area-inset-right)) !important;
+  }
+
+  .service-area-head {
+    margin-bottom: 24px !important;
+  }
+
+  .service-area-head h2 {
+    font-size: clamp(43px, 13vw, 56px) !important;
+    line-height: .98 !important;
+  }
+
+  .area-card {
+    padding: 22px 18px !important;
+    border-radius: 24px !important;
+  }
+
+  .area-card-title {
+    gap: 13px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .area-card-title > span {
+    width: 38px !important;
+    height: 38px !important;
+    flex: 0 0 38px !important;
+  }
+
+  .area-card-title h3 {
+    font-size: 28px !important;
+    line-height: 1.02 !important;
+  }
+
+  /* Two balanced columns of cities, instead of overflowing pill rows. */
+  .city-cloud {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .city-cloud span,
+  .extended-area .city-cloud span {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 10px 8px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    line-height: 1.22;
+    font-size: 11px !important;
+    box-sizing: border-box !important;
+  }
+
+  .area-note {
+    padding-inline: 4px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 360px) {
+  .city-cloud {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .mobile-call-cta {
+    width: calc(100% - 24px);
+  }
+}
+
+@media (min-width: 821px) {
+  .mobile-call-cta {
+    display: none !important;
+  }
+}
 </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Arlene's Party Creation","description":"Custom party styling, balloon decor, themed backdrops and celebration setups.","telephone":"+1-951-591-2586","sameAs":["https://www.instagram.com/arlenespartycreation/"],"knowsAbout":["Balloon styling","Balloon arches","Custom party backdrops","Birthday party decor","Baby shower decor","Event styling"],"areaServed":[{"@type":"City","name":"Perris"},{"@type":"City","name":"Menifee"},{"@type":"City","name":"Romoland"},{"@type":"City","name":"Homeland"},{"@type":"City","name":"Lake Elsinore"},{"@type":"City","name":"Canyon Lake"},{"@type":"City","name":"Moreno Valley"},{"@type":"City","name":"Mead Valley"},{"@type":"City","name":"Nuevo"},{"@type":"City","name":"Winchester"},{"@type":"City","name":"Wildomar"},{"@type":"City","name":"Hemet"},{"@type":"City","name":"Corona"},{"@type":"City","name":"Norco"},{"@type":"City","name":"Woodcrest"},{"@type":"City","name":"Home Gardens"},{"@type":"City","name":"Temescal Valley"},{"@type":"City","name":"Riverside"},{"@type":"City","name":"Murrieta"},{"@type":"City","name":"Temecula"},{"@type":"City","name":"Beaumont"},{"@type":"City","name":"Calimesa"},{"@type":"City","name":"San Jacinto"},{"@type":"City","name":"Eastvale"},{"@type":"City","name":"Jurupa Valley"},{"@type":"City","name":"Redlands"},{"@type":"City","name":"San Bernardino"},{"@type":"City","name":"Colton"},{"@type":"City","name":"Bloomington"},{"@type":"City","name":"Rialto"},{"@type":"City","name":"Fontana"},{"@type":"City","name":"Chino"},{"@type":"City","name":"Chino Hills"},{"@type":"City","name":"Ontario"},{"@type":"City","name":"Rancho Cucamonga"},{"@type":"City","name":"Banning"},{"@type":"City","name":"Yucaipa"},{"@type":"City","name":"Loma Linda"},{"@type":"City","name":"Grand Terrace"}]}</script>
 </head>
@@ -780,6 +964,12 @@ main, main > section, main > .ticker {
     <a href="https://www.instagram.com/arlenespartycreation/" target="_blank" rel="noreferrer">Instagram</a>
     <small>© <span id="year"></span> Arlene's Party Creation</small>
   </footer>
+
+
+  <a class="mobile-call-cta" href="tel:+19515912586" aria-label="Call Arlene's Party Creation at 951-591-2586">
+    <span>Start Your Party</span>
+    <small>Call Arlene</small>
+  </a>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();
 
