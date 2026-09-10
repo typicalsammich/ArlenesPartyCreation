@@ -93,3 +93,17 @@ function handleSubmit(e){
   status.textContent='Thanks! Connect this form to Formspree, Basin, or your preferred CRM before launch.';
   return false;
 }
+
+
+// iOS Safari scroll recovery: never leave the document body locked after first paint/history restore.
+function ensurePageScrollable(){
+  document.documentElement.style.overflowY = 'auto';
+  document.documentElement.style.height = 'auto';
+  document.body.style.overflowY = 'visible';
+  document.body.style.height = 'auto';
+  document.body.style.position = '';
+}
+window.addEventListener('pageshow', ensurePageScrollable, {passive:true});
+window.addEventListener('load', ensurePageScrollable, {passive:true});
+window.addEventListener('orientationchange', ()=>setTimeout(ensurePageScrollable, 120), {passive:true});
+document.addEventListener('DOMContentLoaded', ensurePageScrollable, {once:true});

@@ -348,3 +348,105 @@ main { width: 100%; overflow-x: clip; }
     }
   }
 }
+
+
+/* --- v5 iOS scroll reliability + supplied Arlene logo --- */
+html {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  overflow-x: clip !important;
+  overflow-y: auto !important;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+body {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  min-height: 100%;
+  overflow-x: clip !important;
+  overflow-y: visible !important;
+  touch-action: pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: auto;
+}
+body > header, body > main, body > footer,
+main, main > section, main > .ticker {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  box-sizing: border-box !important;
+}
+/* New supplied logo: no white square, soft circular presentation */
+.brand {
+  min-width: 0 !important;
+  width: auto !important;
+  height: 70px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.brand-logo {
+  width: 70px !important;
+  height: 70px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  border-radius: 50% !important;
+  display: block !important;
+  filter: drop-shadow(0 7px 13px rgba(116,48,71,.12));
+}
+.footer-brand { min-width: 0 !important; }
+.footer-logo {
+  width: 92px !important;
+  height: 92px !important;
+  object-fit: contain !important;
+  border-radius: 50% !important;
+  filter: drop-shadow(0 7px 13px rgba(116,48,71,.10));
+}
+/* Horizontal-only controls should not steal vertical swipes. */
+.project-tabs {
+  touch-action: pan-x pan-y !important;
+  -webkit-overflow-scrolling: touch;
+}
+.project-stage, .featured-project, .hero, .hero-collage,
+.services-editorial, .process-editorial, .service-area, .contact-editorial {
+  touch-action: pan-y pinch-zoom;
+}
+
+@media (max-width: 820px) {
+  :root, html, body,
+  body > header, body > main, body > footer,
+  main, main > section, main > .ticker {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  html, body { position: static !important; }
+  body { isolation: auto !important; }
+  .site-header { position: sticky !important; top: 0; }
+  .ambient-balloons { position: fixed !important; pointer-events: none !important; }
+  .brand { height: 62px !important; }
+  .brand-logo { width: 61px !important; height: 61px !important; }
+  main { overflow: visible !important; }
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    height: 74px !important;
+    padding-left: max(16px, env(safe-area-inset-left)) !important;
+    padding-right: max(16px, env(safe-area-inset-right)) !important;
+  }
+  .brand { height: 58px !important; }
+  .brand-logo { width: 56px !important; height: 56px !important; }
+  .site-header.menu-open .desktop-nav { top: 74px !important; }
+  .hero, .showcase-section, .services-editorial, .process-editorial,
+  .social-editorial, .service-area, .contact-editorial, footer {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-inline: 0 !important;
+    padding-left: max(20px, env(safe-area-inset-left)) !important;
+    padding-right: max(20px, env(safe-area-inset-right)) !important;
+  }
+}
